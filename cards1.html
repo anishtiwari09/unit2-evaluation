@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <style>
+        #uni{
+            width:100%;
+        }
+        #uni > div{
+            
+            width:100%;
+           
+        }
+        #uni > div > h4{
+            background-color: aqua;
+            width:200px;
+            height:200px;
+            margin:auto;
+            margin-top:20px;
+        }
+        
+        @media screen and (max-width:800px){
+            h4{
+                display:block;
+                
+            }
+        }
+        @media screen and (min-width:992px)
+        {
+            #uni > div{
+                display:flex;
+                height:250px;
+               
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div id="uni"></div>
+    <button>add card</button>
+</body>
+<script>
+    var count=1;
+    var parent=document.querySelector('div')
+    var btn=document.querySelector('button')
+    var cardheading=document.querySelector('h1')
+    function printValue(e){
+        e.preventDefault()
+       cardheading.innerHTML=e.target.innerHTML
+    }
+
+    function addCard()
+    {
+        var childs=document.createElement('div')
+        for(var i=count;i<count+5;i++)
+        {
+           var divchild=document.createElement('h4')
+            divchild.innerHTML=i
+            divchild.addEventListener('click',printValue)
+            childs.appendChild(divchild)
+        }
+        parent.appendChild(childs)
+        count=i;
+    }
+    btn.addEventListener('click',addCard) 
+</script>
+</html>
